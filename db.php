@@ -1,12 +1,16 @@
 <?
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
     $link = mysqli_init();
-    mysqli_ssl_set('./certs/key', './cert/cert', './certs/cert_ca', null, null);
+    //mysqli_ssl_set('./certs/key', './cert/cert', './certs/cert_ca', null, null);
     $env = getenv();
     $db_pass = explode(':', explode('@', explode('://',$env['CLEARDB_DATABASE_URL'])[1])[0])[1];
     $db_host = explode('@', explode('://',$env['CLEARDB_DATABASE_URL'])[1])[1];
     $db_user = $env['USER'];
-    mysqli_real_connect($link, $db_host, $db_user, $db_pass, $db);
+    echo "user: $db_user<br>pass: $db_pass<br>host: $db_host<br>";
+    //mysqli_real_connect($link, $db_host, $db_user, $db_pass, $db);
     $baseURL = 'https://lookie1.whitehot.ninja/';
 
 
