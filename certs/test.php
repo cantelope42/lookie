@@ -1,6 +1,6 @@
 <?
 
 echo shell_exec("printenv") . "\n";
-echo "\n\n";
+echo "<br><br>";
 echo json_encode(getenv());
 ?>

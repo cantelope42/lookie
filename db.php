@@ -1,8 +1,12 @@
 <?
 
     $link = mysqli_init();
-    mysqli_ssl_set('./certs/key', './cert/cert', './certs/cert_ca', null, null);
-    mysqli_real_connect($link, "localhost", "my_user", "my_password", "my_db");
+mysqli_ssl_set('./certs/key', './cert/cert', './certs/cert_ca', null, null);
+    $env = getenv();
+$db_host = $env['CLEARDB_DATABASE_URL'];
+$db_user = $env['USER'];
+$db_pass = $env['']
+    mysqli_real_connect($link, $db_host, $db_user, $db_pass, $db);
     $baseURL = 'https://lookie1.whitehot.ninja/';
 /*
 $db_user="user";
