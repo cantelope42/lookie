@@ -4,7 +4,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
     $link = mysqli_init();
-    mysqli_ssl_set('./certs/key', './cert/cert', './certs/cert_ca', null, null);
+    mysqli_ssl_set($link, './certs/key', './cert/cert', './certs/cert_ca', null, null);
     $env = getenv();
     $db_pass = explode(':', explode('@', explode('://',$env['CLEARDB_DATABASE_URL'])[1])[0])[1];
     $db_host = explode('@', $env['CLEARDB_DATABASE_URL'])[1];
