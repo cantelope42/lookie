@@ -2,5 +2,5 @@
 
 echo shell_exec("printenv") . "\n";
 echo "\n\n";
-echo getenv();
+echo json_encode(getenv());
 ?>
