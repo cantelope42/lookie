@@ -1,13 +1,22 @@
 <?
 
     $link = mysqli_init();
-mysqli_ssl_set('./certs/key', './cert/cert', './certs/cert_ca', null, null);
+    mysqli_ssl_set('./certs/key', './cert/cert', './certs/cert_ca', null, null);
     $env = getenv();
-$db_host = $env['CLEARDB_DATABASE_URL'];
-$db_user = $env['USER'];
-$db_pass = $env['']
+    $db_pass = explode(':', explode('@', explode('://',$env['CLEARDB_DATABASE_URL'])[1])[0])[1];
+    $db_host = explode('@', explode('://',$env['CLEARDB_DATABASE_URL'])[1])[1];
+    $db_user = $env['USER'];
     mysqli_real_connect($link, $db_host, $db_user, $db_pass, $db);
     $baseURL = 'https://lookie1.whitehot.ninja/';
+
+
+    $sql = 'SHOW DATABASES;';
+    $res = mysqli_query($link, $sql);
+    if(mysqli_num_rows($res)){
+      $row = mysqli_fetch_assoc($res);
+      echo json_encode($row) . "<br><br>";
+    }
+    echo "<br><br>done.";
 /*
 $db_user="user";
   $db_pass=explode("\n", file_get_contents('/home/cantelope/plorgpw'))[0];
